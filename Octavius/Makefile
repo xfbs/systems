@@ -13,6 +13,9 @@ PACKAGES += meson
 PACKAGES += ninja-build
 PACKAGES += pkg-config
 
+# libraries
+PACKAGES += libssl-dev
+
 # tools (network)
 PACKAGES += nmap
 PACKAGES += wget
@@ -73,3 +76,8 @@ rust-toolchains: $(RUSTUP)
 
 rust-crates: $(RUSTUP)
 	$(CARGO) install cargo-edit
+
+# load custom dconf configuration.
+dconf:
+	dconf dump / > dconf.bak
+	echo dconf.conf | dconf load /
