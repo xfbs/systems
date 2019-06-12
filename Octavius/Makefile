@@ -13,10 +13,14 @@ PACKAGES += meson
 PACKAGES += ninja-build
 PACKAGES += pkg-config
 PACKAGES += cmake
+PACKAGES += linuxbrew-wrapper
+PACKAGES += gnome-terminal
+PACKAGES += zeal
 
 # libraries
 PACKAGES += libssl-dev
 PACKAGES += fuse libfuse-dev
+PACKAGES += libgtk-3-0 libgtk-3-dev
 
 # tools (network)
 PACKAGES += nmap
