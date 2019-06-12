@@ -40,6 +40,7 @@ PACKAGES += ffmpeg
 PACKAGES += qemu
 PACKAGES += jq
 PACKAGES += oathtool
+PACKAGES += pv
 
 # tools (vpn)
 PACKAGES += openconnect
@@ -51,7 +52,7 @@ PACKAGES += neovim
 
 # fonts
 PACKAGES += fonts-ebgaramond
-PACKAGES += fonts-ebgaramond-extra 
+PACKAGES += fonts-ebgaramond-extra
 
 # apps
 PACKAGES += firefox
