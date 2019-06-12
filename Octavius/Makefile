@@ -12,9 +12,11 @@ PACKAGES += git
 PACKAGES += meson
 PACKAGES += ninja-build
 PACKAGES += pkg-config
+PACKAGES += cmake
 
 # libraries
 PACKAGES += libssl-dev
+PACKAGES += fuse libfuse-dev
 
 # tools (network)
 PACKAGES += nmap
@@ -32,6 +34,7 @@ PACKAGES += bash-completion
 PACKAGES += ffmpeg
 PACKAGES += qemu
 PACKAGES += jq
+PACKAGES += oathtool
 
 # tools (vpn)
 PACKAGES += openconnect
