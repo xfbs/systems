@@ -12,7 +12,7 @@ PACKAGES += git
 PACKAGES += meson
 PACKAGES += ninja-build
 PACKAGES += pkg-config
-PACKAGES += cmake
+PACKAGES += cmake cmake-curses-gui
 PACKAGES += linuxbrew-wrapper
 PACKAGES += gnome-terminal
 PACKAGES += zeal
@@ -21,6 +21,7 @@ PACKAGES += zeal
 PACKAGES += libssl-dev
 PACKAGES += fuse libfuse-dev
 PACKAGES += libgtk-3-0 libgtk-3-dev
+PACKAGES += bzip2 libbz2-dev
 
 # tools (network)
 PACKAGES += nmap
