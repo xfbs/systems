@@ -63,7 +63,7 @@ packages:
 RUSTUP=$(HOME)/.cargo/bin/rustup
 CARGO=$(HOME)/.cargo/bin/cargo
 
-rust: rust-toolchains rust-crates
+rust: rust-toolchains rust-components rust-crates
 
 # install rustup
 rustup: $(RUSTUP)
@@ -74,8 +74,11 @@ $(RUSTUP):
 rust-toolchains: $(RUSTUP)
 	$(RUSTUP) toolchain install nightly
 
+rust-components: $(RUSTUP)
+	$(RUSTUP) component add rustfmt
+
 rust-crates: $(RUSTUP)
-	$(CARGO) install cargo-edit
+	test -e $(HOME)/.cargo/bin/cargo-add || $(CARGO) install cargo-edit
 
 # load custom dconf configuration.
 dconf:
