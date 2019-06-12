@@ -80,4 +80,4 @@ rust-crates: $(RUSTUP)
 # load custom dconf configuration.
 dconf:
 	dconf dump / > dconf.bak
-	echo dconf.conf | dconf load /
+	cat dconf.conf | dconf load /
