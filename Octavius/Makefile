@@ -11,6 +11,7 @@ PACKAGES += htop
 PACKAGES += git
 PACKAGES += meson
 PACKAGES += ninja-build
+PACKAGES += pkg-config
 
 # tools (network)
 PACKAGES += nmap
@@ -37,6 +38,10 @@ PACKAGES += openvpn
 PACKAGES += vim
 PACKAGES += neovim
 
+# fonts
+PACKAGES += fonts-ebgaramond
+PACKAGES += fonts-ebgaramond-extra 
+
 # apps
 PACKAGES += firefox
 PACKAGES += texlive-full
@@ -51,3 +56,20 @@ updates:
 # install packages
 packages:
 	apt install -y $(PACKAGES)
+
+RUSTUP=$(HOME)/.cargo/bin/rustup
+CARGO=$(HOME)/.cargo/bin/cargo
+
+rust: rust-toolchains rust-crates
+
+# install rustup
+rustup: $(RUSTUP)
+	
+$(RUSTUP):
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+rust-toolchains: $(RUSTUP)
+	$(RUSTUP) toolchain install nightly
+
+rust-crates: $(RUSTUP)
+	$(CARGO) install cargo-edit
