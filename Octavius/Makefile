@@ -16,6 +16,7 @@ PACKAGES += cmake cmake-curses-gui
 PACKAGES += linuxbrew-wrapper
 PACKAGES += gnome-terminal
 PACKAGES += zeal
+PACKAGES += llvm clang clang-tools clang-format clang-tidy
 
 # libraries
 PACKAGES += libssl-dev
@@ -41,6 +42,7 @@ PACKAGES += qemu
 PACKAGES += jq
 PACKAGES += oathtool
 PACKAGES += pv
+#PACKAGES += redshift redshift-gtk
 
 # tools (vpn)
 PACKAGES += openconnect
@@ -57,6 +59,7 @@ PACKAGES += fonts-ebgaramond-extra
 # apps
 PACKAGES += firefox
 PACKAGES += texlive-full
+PACKAGES += vlc
 
 default: updates packages
 
