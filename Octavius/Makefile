@@ -60,6 +60,7 @@ PACKAGES += fonts-ebgaramond-extra
 PACKAGES += firefox
 PACKAGES += texlive-full
 PACKAGES += vlc
+PACKAGES += texstudio
 
 default: updates packages
 
