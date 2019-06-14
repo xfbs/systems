@@ -71,6 +71,11 @@ repositories: /etc/apt/sources.list.d/virtualbox.list
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2F683C52980AECF
 	echo "deb https://download.virtualbox.org/virtualbox/debian bionic contrib" > $@
 
+/etc/apt/sources.list.d/jonathonf-vim.list:
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F06FC659
+	echo "deb http://ppa.launchpad.net/jonathonf/vim/ubuntu bionic main" > $@
+	echo "deb-src http://ppa.launchpad.net/jonathonf/vim/ubuntu bionic main" >> $@
+
 # install updates
 updates:
 	apt update
