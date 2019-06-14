@@ -17,6 +17,7 @@ PACKAGES += linuxbrew-wrapper
 PACKAGES += gnome-terminal
 PACKAGES += zeal
 PACKAGES += llvm clang clang-tools clang-format clang-tidy
+PACKAGES += lxc-utils lxd
 
 # libraries
 PACKAGES += libssl-dev
