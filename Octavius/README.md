@@ -26,9 +26,10 @@ https://pier0w.wordpress.com/2016/12/24/lxc-unprivileged-containers-ubuntu-xenia
 
 ## LXD
 
+    $ newgrp lxd
     $ lxd init
+    $ lxc launch ubuntu:18.04 first
 
+https://linuxcontainers.org/lxd/getting-started-cli/
 https://www.cyberciti.biz/faq/how-to-install-setup-lxd-on-fedora-linux/
-
-
 
