@@ -62,10 +62,11 @@ PACKAGES += texlive-full
 PACKAGES += vlc
 PACKAGES += texstudio
 PACKAGES += virtualbox-6.0
+PACKAGES += weechat
 
 default: repositories updates packages
 
-repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list
+repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/weechat.list
 
 /etc/apt/sources.list.d/virtualbox.list:
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2F683C52980AECF
@@ -80,6 +81,10 @@ repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/ne
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8231B6DD
 	echo "deb http://ppa.launchpad.net/neovim-ppa/stable/ubuntu bionic main" > $@
 	echo "deb-src http://ppa.launchpad.net/neovim-ppa/stable/ubuntu bionic main" >> $@
+
+/etc/apt/sources.list.d/weechat.list:
+	apt-key adv --keyserver keys.gnupg.net --recv-keys 11E9DE8848F2B65222AA75B8D1820DB22A11534E
+	echo "deb https://weechat.org/ubuntu bionic main" > $@
 
 # install updates
 updates:
