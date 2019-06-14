@@ -61,8 +61,15 @@ PACKAGES += firefox
 PACKAGES += texlive-full
 PACKAGES += vlc
 PACKAGES += texstudio
+PACKAGES += virtualbox-6.0
 
-default: updates packages
+default: repositories updates packages
+
+repositories: /etc/apt/sources.list.d/virtualbox.list
+
+/etc/apt/sources.list.d/virtualbox.list:
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2F683C52980AECF
+	echo "deb https://download.virtualbox.org/virtualbox/debian bionic contrib" > $@
 
 # install updates
 updates:
