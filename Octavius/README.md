@@ -45,3 +45,9 @@ Problem: version of TexLive in Ubuntu repositories is outdated.
 https://tex.stackexchange.com/questions/448466/not-possible-to-install-packages-in-ubuntu-bionic-beaver
 https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
 http://www.tug.org/texlive/debian.html
+
+Install vanilla texlive:
+
+    $ wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    $ tar xf install-tl-unx.tar.gz
+    $ sudo ./install-tl
