@@ -51,3 +51,8 @@ Install vanilla texlive:
     $ wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     $ tar xf install-tl-unx.tar.gz
     $ sudo ./install-tl
+
+Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
+Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
+Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
+
