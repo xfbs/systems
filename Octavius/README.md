@@ -33,3 +33,15 @@ https://pier0w.wordpress.com/2016/12/24/lxc-unprivileged-containers-ubuntu-xenia
 https://linuxcontainers.org/lxd/getting-started-cli/
 https://www.cyberciti.biz/faq/how-to-install-setup-lxd-on-fedora-linux/
 
+## Snapcraft
+
+    $ snap install spotify
+    $ snap install android-studio
+
+## TexLive
+
+Problem: version of TexLive in Ubuntu repositories is outdated.
+
+https://tex.stackexchange.com/questions/448466/not-possible-to-install-packages-in-ubuntu-bionic-beaver
+https://tex.stackexchange.com/questions/1092/how-to-install-vanilla-texlive-on-debian-or-ubuntu
+http://www.tug.org/texlive/debian.html
