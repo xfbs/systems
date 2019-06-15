@@ -18,6 +18,7 @@ PACKAGES += gnome-terminal
 PACKAGES += zeal
 PACKAGES += llvm clang clang-tools clang-format clang-tidy
 PACKAGES += gradle
+PACKAGES += lxc-utils lxd
 
 # libraries
 PACKAGES += libssl-dev
@@ -63,10 +64,12 @@ PACKAGES += texlive-full
 PACKAGES += vlc
 PACKAGES += texstudio
 PACKAGES += virtualbox-6.0
+PACKAGES += weechat
 
 default: repositories updates packages
 
 repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/chwien-gradle.list
+repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/weechat.list /etc/apt/sources.list.d/chwien-gradle.list
 
 /etc/apt/sources.list.d/virtualbox.list:
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2F683C52980AECF
@@ -87,6 +90,10 @@ repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/ne
 	echo "deb http://ppa.launchpad.net/cwchien/gradle/ubuntu bionic main" > $@
 	echo "deb-src http://ppa.launchpad.net/cwchien/gradle/ubuntu bionic main" >> $@
 
+/etc/apt/sources.list.d/weechat.list:
+	apt-key adv --keyserver keys.gnupg.net --recv-keys 11E9DE8848F2B65222AA75B8D1820DB22A11534E
+	echo "deb https://weechat.org/ubuntu bionic main" > $@
+
 # install updates
 updates:
 	apt update
@@ -103,7 +110,7 @@ rust: rust-toolchains rust-components rust-crates
 
 # install rustup
 rustup: $(RUSTUP)
-	
+
 $(RUSTUP):
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
