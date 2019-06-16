@@ -4,17 +4,21 @@ Development machine.
 
 ## Setup
 
-Setup repositories, update package list, and install all packages.
+Setup repositories, update package list, and install all packages. This needs to be run as root to have access to `apt`.
 
     $ sudo make
 
-Install and setup rust compiler and some tooling
+Install and setup rust compiler and some tooling. This installs everything locally and doesn't need to be run as root.
 
     $ make rust
 
-Setup dconf settings
+Setup dconf settings. This only affects the current user, and doesn't need to be run as root.
 
     $ make dconf
+
+Setup swift toolchain. This does a user install, it installs swift into `~/.local`, so it doesn't need to be run as root.
+
+    $ make swift
 
 TODO: snapcraft, spotify.
 

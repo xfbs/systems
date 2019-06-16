@@ -127,3 +127,17 @@ rust-crates: $(RUSTUP)
 dconf:
 	dconf dump / > dconf.bak
 	cat dconf.conf | dconf load /
+
+SWIFT_URL = "https://swift.org/builds/swift-5.0.1-release/ubuntu1804/swift-5.0.1-RELEASE/swift-5.0.1-RELEASE-ubuntu18.04.tar.gz"
+
+swift: swift.tar.gz
+	tar -C ~/.local --strip-components 2 -xvf swift.tar.gz
+	rm swift.tar.gz
+
+swift.tar.gz: swift.tar.gz.sig
+	curl $(SWIFT_URL) -o swift.tar.gz
+	wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
+	gpg --verify "swift.tar.gz.sig"
+
+swift.tar.gz.sig:
+	curl $(SWIFT_URL).sig -o swift.tar.gz.sig
