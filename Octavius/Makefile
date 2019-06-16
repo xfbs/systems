@@ -19,6 +19,7 @@ PACKAGES += zeal
 PACKAGES += llvm clang clang-tools clang-format clang-tidy
 PACKAGES += gradle
 PACKAGES += lxc-utils lxd
+PACKAGES += docker.io
 
 # libraries
 PACKAGES += libssl-dev
