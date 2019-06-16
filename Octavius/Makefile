@@ -66,6 +66,7 @@ PACKAGES += vlc
 PACKAGES += texstudio
 PACKAGES += virtualbox-6.0
 PACKAGES += weechat
+PACKAGES += gnome-system-monitor
 
 default: repositories updates packages
 
