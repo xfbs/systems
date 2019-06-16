@@ -37,6 +37,14 @@ https://pier0w.wordpress.com/2016/12/24/lxc-unprivileged-containers-ubuntu-xenia
 https://linuxcontainers.org/lxd/getting-started-cli/
 https://www.cyberciti.biz/faq/how-to-install-setup-lxd-on-fedora-linux/
 
+## Docker
+
+Docker is installed by default. However, you need to perform
+
+    $ sudo adduser <username> docker
+
+And re-login in order to allow your user to use it. 
+
 ## Snapcraft
 
     $ snap install spotify
