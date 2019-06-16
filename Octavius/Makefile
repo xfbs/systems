@@ -20,12 +20,17 @@ PACKAGES += llvm clang clang-tools clang-format clang-tidy
 PACKAGES += gradle
 PACKAGES += lxc-utils lxd
 PACKAGES += docker.io docker-compose
+PACKAGES += flex flex-doc
+PACKAGES += bison bison-doc
 
 # libraries
 PACKAGES += libssl-dev
 PACKAGES += fuse libfuse-dev
 PACKAGES += libgtk-3-0 libgtk-3-dev
 PACKAGES += bzip2 libbz2-dev
+PACKAGES += libncurses5-dev libncurses5 ncurses-doc
+PACKAGES += libelf-dev
+PACKAGES += libjansson-dev libjansson-doc
 
 # tools (network)
 PACKAGES += nmap
