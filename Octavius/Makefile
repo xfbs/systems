@@ -22,6 +22,7 @@ PACKAGES += lxc-utils lxd
 PACKAGES += docker.io docker-compose
 PACKAGES += flex flex-doc
 PACKAGES += bison bison-doc
+PACKAGES += gdb
 
 # libraries
 PACKAGES += libssl-dev
@@ -31,6 +32,9 @@ PACKAGES += bzip2 libbz2-dev
 PACKAGES += libncurses5-dev libncurses5 ncurses-doc
 PACKAGES += libelf-dev
 PACKAGES += libjansson-dev libjansson-doc
+PACKAGES += libpthread-workqueue0
+PACKAGES += libkqueue0
+PACKAGES += libblocksruntime0
 
 # tools (network)
 PACKAGES += nmap
@@ -72,6 +76,8 @@ PACKAGES += texstudio
 PACKAGES += virtualbox-6.0
 PACKAGES += weechat
 PACKAGES += gnome-system-monitor
+PACKAGES += seahorse
+PACKAGES += gnome-disk-utility
 
 default: repositories updates packages
 
