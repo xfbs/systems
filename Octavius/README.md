@@ -68,3 +68,9 @@ Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
 Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
 Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
 
+## KVM
+
+To setup KVM, after installing qemu and related packages, you have to add yourself to the KVM
+group.
+
+    $ sudo adduser $USER kvm
