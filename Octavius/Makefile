@@ -35,6 +35,7 @@ PACKAGES += libjansson-dev libjansson-doc
 PACKAGES += libpthread-workqueue0
 PACKAGES += libkqueue0
 PACKAGES += libblocksruntime0
+PACKAGES += libzmq3-dev libczmq-dev
 
 # tools (network)
 PACKAGES += nmap
