@@ -8,6 +8,7 @@ PACKAGES += build-essential
 PACKAGES += binwalk
 PACKAGES += cloc
 PACKAGES += htop
+PACKAGES += powertop
 PACKAGES += git
 PACKAGES += meson
 PACKAGES += ninja-build
@@ -23,6 +24,7 @@ PACKAGES += docker.io docker-compose
 PACKAGES += flex flex-doc
 PACKAGES += bison bison-doc
 PACKAGES += gdb
+PACKAGES += units
 
 # libraries
 PACKAGES += libssl-dev
