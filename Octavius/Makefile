@@ -25,6 +25,7 @@ PACKAGES += flex flex-doc
 PACKAGES += bison bison-doc
 PACKAGES += gdb
 PACKAGES += units
+PACKAGES += doxygen
 
 # libraries
 PACKAGES += libssl-dev
