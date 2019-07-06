@@ -31,6 +31,7 @@ brew "google-java-format"
 brew "cabal-install"
 brew "fswatch"
 brew "binwalk"
+brew "doxygen"
 
 # libraries
 brew "zlib"
