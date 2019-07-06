@@ -26,6 +26,7 @@ PACKAGES += bison bison-doc
 PACKAGES += gdb
 PACKAGES += units
 PACKAGES += doxygen
+PACKAGES += graphviz
 
 # libraries
 PACKAGES += libssl-dev
