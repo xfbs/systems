@@ -1,0 +1,5 @@
+# Notes
+
+## Name ideas
+
+* Taurus
