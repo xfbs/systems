@@ -27,6 +27,7 @@ PACKAGES += gdb
 PACKAGES += units
 PACKAGES += doxygen
 PACKAGES += graphviz
+PACKAGES += devhelp
 
 # libraries
 PACKAGES += libssl-dev
