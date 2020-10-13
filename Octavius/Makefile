@@ -1,37 +1,36 @@
 # languages
 PACKAGES += ruby
-PACKAGES += default-jdk default-jdk-doc
-PACKAGES += nodejs
+PACKAGES += python3
+#PACKAGES += default-jdk default-jdk-doc
+#PACKAGES += nodejs
 
-# tools (dev)
+# build tools
 PACKAGES += build-essential
-PACKAGES += binwalk
-PACKAGES += cloc
-PACKAGES += htop
-PACKAGES += powertop
 PACKAGES += git
 PACKAGES += meson
 PACKAGES += ninja-build
 PACKAGES += pkg-config
-PACKAGES += cmake cmake-curses-gui
-PACKAGES += linuxbrew-wrapper
-PACKAGES += gnome-terminal
-PACKAGES += zeal
+PACKAGES += cmake
 PACKAGES += llvm clang clang-tools clang-format clang-tidy
-PACKAGES += gradle
-PACKAGES += lxc-utils lxd
-PACKAGES += docker.io docker-compose
 PACKAGES += flex flex-doc
 PACKAGES += bison bison-doc
-PACKAGES += gdb
+PACKAGES += gdb lldb
+
+# tools (dev)
+PACKAGES += binwalk
+PACKAGES += cloc
+PACKAGES += htop
+PACKAGES += powertop iotop atop
+PACKAGES += gradle
+PACKAGES += lxc-utils lxd
+#PACKAGES += docker.io docker-compose
 PACKAGES += units
 PACKAGES += doxygen
 PACKAGES += graphviz
-PACKAGES += devhelp
 
 # libraries
-PACKAGES += libssl-dev
 PACKAGES += fuse libfuse-dev
+PACKAGES += libssl-dev
 PACKAGES += libgtk-3-0 libgtk-3-dev
 PACKAGES += bzip2 libbz2-dev
 PACKAGES += libncurses5-dev libncurses5 ncurses-doc
@@ -41,6 +40,7 @@ PACKAGES += libpthread-workqueue0
 PACKAGES += libkqueue0
 PACKAGES += libblocksruntime0
 PACKAGES += libzmq3-dev libczmq-dev
+PACKAGES += libarchive-dev
 
 # tools (network)
 PACKAGES += nmap
@@ -48,7 +48,9 @@ PACKAGES += wget
 PACKAGES += curl
 PACKAGES += aria2
 PACKAGES += magic-wormhole
-PACKAGES += transmission
+PACKAGES += wireguard
+PACKAGES += openconnect
+PACKAGES += openvpn
 
 # tools (misc)
 PACKAGES += tmux
@@ -60,11 +62,9 @@ PACKAGES += qemu
 PACKAGES += jq
 PACKAGES += oathtool
 PACKAGES += pv
+PACKAGES += zsh
+PACKAGES += weechat
 #PACKAGES += redshift redshift-gtk
-
-# tools (vpn)
-PACKAGES += openconnect
-PACKAGES += openvpn
 
 # editors
 PACKAGES += vim
@@ -79,16 +79,21 @@ PACKAGES += firefox
 PACKAGES += texlive-full
 PACKAGES += vlc
 PACKAGES += texstudio
-PACKAGES += virtualbox-6.0
-PACKAGES += weechat
+#PACKAGES += virtualbox-6.0
 PACKAGES += gnome-system-monitor
 PACKAGES += seahorse
 PACKAGES += gnome-disk-utility
+#PACKAGES += gnome-terminal
+PACKAGES += zeal
+PACKAGES += baobab
+#PACKAGES += devhelp
+PACKAGES += transmission
 
 default: repositories updates packages
 
-repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/chwien-gradle.list
-repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/weechat.list /etc/apt/sources.list.d/chwien-gradle.list
+#repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/chwien-gradle.list
+#repositories: /etc/apt/sources.list.d/virtualbox.list /etc/apt/sources.list.d/neovim.list /etc/apt/sources.list.d/jonathonf-vim.list /etc/apt/sources.list.d/weechat.list /etc/apt/sources.list.d/chwien-gradle.list
+repositories:
 
 /etc/apt/sources.list.d/virtualbox.list:
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2F683C52980AECF
