@@ -1,0 +1,91 @@
+Unbound ist ein populärer DNS Resolver, der technisch auf dem aktuellen Stand ist und in allen Linux Distributionen in den Repos bereitsteht. Die folgende Anleitung wurde mit Ubuntu 20.04 getestet, sollte aber auch für andere Linux Distributionen anwendbar sein.
+
+    Unbound kann man mit dem bevorzugten Paketmanager installieren:
+    > sudo apt install unbound
+    Dann holt man den aktuellen Root Key für die DNSSEC Validierung:
+    > sudo unbound-anchor
+    Standardmäßig verwenden Ubuntu und Derivate systemd-resolved als DNS Cache Daemon. systemd-resolved ist zu deaktivieren, wenn man Unbound verwendet:
+    > sudo systemctl disable systemd-resolved
+    Außerdem soll sich der NetworkManager nicht in die Konfiguration der DNS Server einmischen, wenn Unbound läuft. Dafür speichert man eine Konfigurationsdatei (nodns.conf) im Verzeichnis "/etc/NetworkManager/conf.d/" mit folgendem Inhalt:
+    [main]
+    dns=none
+    systemd-resolved=false
+    Optional kann man Unbound abgewöhnen, die eigene Versionsnummer und den Hostnamen des Rechners mit jeder DNS Suche zu verschicken. Dafür speichert man eine Datei im Verzeichnis "/etc/unbound/unbound.conf.d/" mit folgendem Inhalt:
+    hide-identity: yes
+    hide-version: yes
+    Wenn Unbound nicht nur für den lokalen Rechner seine Dienste anbieten soll, sondern auch für andere Rechner im lokalen LAN, dann kann man folgende Optionen in eine Konfigurationsdatei im Verzeichnis "/etc/unbound/unbound.conf.d/" schreiben:
+    server:
+       interface: 0.0.0.0
+       acccess-control: 192.168.0.0/16
+
+Nach einem Reboot zur Aktivierung der Konfigurationen kümmert sich Unbound als stand-alone Resolver um die DNS Auflösung. Man kann prüfen, ob alle Features aktiv sind:
+
+    In Ubuntu startet Unbound unter Kontrolle von apparmor, siehe:
+    > sudo aa-status
+    DNSSEC Validierung ist aktiviert, Antwort mit ad Flag (Authenticated Data):
+    > dig mailbox.org
+
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; >>HEADER<< opcode: QUERY, status: NOERROR
+    ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1,
+    QNAME Minimisation ist als Privacy Feature aktiviert:
+    > dig txt qnamemintest.internet.nl +short
+    a.b.qnamemin-test.internet.nl.
+    "HOORAY - QNAME minimisation is enabled on your resolver :)!"
+
+Upstream DNS Server mit DNS-over-TLS
+Wenn man Unbound nicht als stand-alone Resolver betreiben möchte, sondern Upstream DNS Server nutzen möchte, um von deren großem Cache und evtl. erweiterten Sicherheits­features zu profitieren, kann man DNS-over-TLS nutzen um sicherzustellen, dass man wirklich mit den gewünschten Servern verbunden wird und die Daten nicht manipuliert wurden. Mehrere Upstream Server in einer Konfiguration werden round-robin genutzt.
+
+    Man kann die Konfigurationsdatei upstreamdns.conf im Verzeichnis "/etc/unbound/unbound.conf.d/" speichern, um die empfohlenen DNS Server ohne Werbe- und Trackingblocker als Upstream Server zu verwenden:
+    server:
+       tls-cert-bundle: /etc/ssl/certs/ca-certificates.crt
+
+    forward-zone:
+       name: "."
+       forward-tls-upstream: yes
+
+       # Freifunk München
+       forward-addr: 195.30.94.28@853#dot.ffmuc.net
+
+       # Digitalcourage e.V.
+       forward-addr: 46.182.19.48@853#dns2.digitalcourage.de
+
+       # Digitale Gesellschaft (CH) DNS Server
+       forward-addr: 185.95.218.42@853#dns.digitale-gesellschaft.ch
+       forward-addr: 185.95.218.43@853#dns.digitale-gesellschaft.ch
+    Wenn man Upstream DNS Server mit Werbe- und Trackingblocker verwenden möchte, kann man die Konfigurationsdatei upstreamdns-werbeblocker.conf im Verzeichnis "/etc/unbound/unbound.conf.d/" speichern:
+    server:
+       tls-cert-bundle: /etc/ssl/certs/ca-certificates.crt
+
+    forward-zone:
+       name: "."
+       forward-tls-upstream: yes
+
+       # Dismail.de DNS Server
+       forward-addr: 80.241.218.68@853#fdns1.dismail.de
+       forward-addr: 159.69.114.157@853#fdns2.dismail.de
+
+       # dnsforge.de DNS Server
+       forward-addr: 176.9.93.198@853#dnsforge.de
+       forward-addr: 176.9.1.117@853#dnsforge.de
+
+       # BlahDNS DE Server
+       forward-addr: 159.69.198.101@853#dot-de.blahdns.com
+    Wenn man Quad9 verwenden will, um von der guten Threat Protection zu profitieren, kann man die Datei upstreamdns-quad9.conf im dem Verzeichnis speichern:
+    server:
+       tls-cert-bundle: /etc/ssl/certs/ca-certificates.crt
+
+    forward-zone:
+       name: "."
+       forward-tls-upstream: yes
+
+       # Quad9 Primary & Secondary DNS Server
+       forward-addr: 9.9.9.9@853#dns.quad9.net
+       forward-addr: 149.112.112.112@853#dns.quad9.net
+    Hinweis: für RedHat/Fedora ist Option "tls-cert-bundle" anzupassen:
+    tls-cert-bundle: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+
+Mit einem Neustart werden die Änderungen übernommen:
+> sudo systemctl restart unbound
+https://www.privacy-handbuch.de/handbuch_11.htm
