@@ -1,6 +1,7 @@
 # languages
 PACKAGES += ruby
 PACKAGES += python3
+PACKAGES += python3-pip
 
 # build tools
 PACKAGES += build-essential
@@ -87,10 +88,17 @@ PACKAGES += zeal
 PACKAGES += baobab
 #PACKAGES += devhelp
 PACKAGES += transmission
+PACKAGES += spotify-client
 
 default: repositories updates packages
 
-repositories:
+repositories: /etc/apt/sources.list.d/spotify.list
+
+/etc/apt/sources.list.d/spotify.list: /usr/share/keyrings/repository-spotify-com-keyring.gpg
+	echo "deb [signed-by=$<] http://repository.spotify.com stable non-free" > "$@"
+
+/usr/share/keyrings/repository-spotify-com-keyring.gpg:
+	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --dearmor > "$@"
 
 # install updates
 updates:
@@ -125,3 +133,6 @@ rust-crates: $(RUSTUP)
 dconf:
 	dconf dump / > dconf.bak
 	cat dconf.conf | dconf load /
+
+pip:
+	pip3 install pygments
