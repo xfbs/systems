@@ -27,6 +27,7 @@ PACKAGES += doxygen
 PACKAGES += graphviz
 PACKAGES += docker docker-compose
 PACKAGES += virt-manager
+PACKAGES += qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
 
 # libraries
 PACKAGES += fuse libfuse-dev
