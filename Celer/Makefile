@@ -29,6 +29,10 @@ PACKAGES += graphviz
 PACKAGES += docker docker-compose
 PACKAGES += virt-manager
 PACKAGES += qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager
+PACKAGES += dnsutils
+#PACKAGES += sshfs
+PACKAGES += gcovr
+PACKAGES += valgrind
 
 # libraries
 PACKAGES += fuse libfuse-dev
@@ -65,6 +69,7 @@ PACKAGES += pv
 PACKAGES += zsh
 PACKAGES += weechat
 #PACKAGES += redshift redshift-gtk
+PACKAGES += unbound
 
 # editors
 PACKAGES += vim
