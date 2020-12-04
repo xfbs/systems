@@ -94,6 +94,7 @@ PACKAGES += baobab
 #PACKAGES += devhelp
 PACKAGES += transmission
 PACKAGES += spotify-client
+PACKAGES += inkscape
 
 default: repositories updates packages
 
