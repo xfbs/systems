@@ -2,6 +2,7 @@
 PACKAGES += ruby
 PACKAGES += python3
 PACKAGES += python3-pip
+PACKAGES += nodejs yarnpkg webpack
 
 # build tools
 PACKAGES += build-essential
